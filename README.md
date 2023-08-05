@@ -1,6 +1,6 @@
-### MilkPro-Data-Pipeline-Project  ###
+# MilkPro-Data-Pipeline-Project  #
 
-# Introduction:
+## Introduction: ##
 	The "MilkPro Data Pipeline" is a data engineering project that aims to build a scalable and real-time data pipeline for processing and analyzing milk properties data. The project leverages PySpark and Kafka to handle data streaming and incorporates various parameters such as id, fat_percentage, protein_percentage, lactose_percentage, temperature, farm id, timestamp, supplier id, locations, environmental conditions, batch id, and pH level. The project addresses specific business scenarios related to milk categorization based on fat percentage and location-based data segregation, with an error handling mechanism for bad data.
 
 # Project Details:
