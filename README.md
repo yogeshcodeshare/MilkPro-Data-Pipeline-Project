@@ -1,7 +1,7 @@
 # MilkPro-Data-Pipeline-Project  
 
-## Introduction ##
-	The "MilkPro Data Pipeline" is a data engineering project that aims to build a scalable and real-time data pipeline for processing and analyzing milk properties data. The project leverages PySpark and Kafka to handle data streaming and incorporates various parameters such as id, fat_percentage, protein_percentage, lactose_percentage, temperature, farm id, timestamp, supplier id, locations, environmental conditions, batch id, and pH level. The project addresses specific business scenarios related to milk categorization based on fat percentage and location-based data segregation, with an error handling mechanism for bad data.
+# Introduction 
+The "MilkPro Data Pipeline" is a data engineering project that aims to build a scalable and real-time data pipeline for processing and analyzing milk properties data. The project leverages PySpark and Kafka to handle data streaming and incorporates various parameters such as id, fat_percentage, protein_percentage, lactose_percentage, temperature, farm id, timestamp, supplier id, locations, environmental conditions, batch id, and pH level. The project addresses specific business scenarios related to milk categorization based on fat percentage and location-based data segregation, with an error handling mechanism for bad data.
 	
 
 # Project Details:
@@ -23,27 +23,30 @@ The project incorporates the following parameters for analysis:
 12.	pH Level: The pH level of the milk.
 
 
-Business Logic:
+# Business Logic:
 The project focuses on the following business scenarios:
 •	Milk Categorization: The project includes a categorization mechanism that directs milk data to different dataframes based on the fat percentage range, Protein percentage range, Lactose percentage range, Temperature range from 62% to 72%.
-Sr. No.	Milk Categorization	Fat percentage	Protein percentage	Lactose percentage
-1.	Skimmed Milk	0.1% to 0.5%.	3 to 3.3%	4.5 to 4.7%
-2.	Double Toned Milk	0.6% to 2.9%.	3.3% to 3.5%	4.8 to 5%
-3.	Standardized Milk	3% to 5.9%.	3.6% to 3.9%	5.1 to 5.4%
-4.	Full Cream Milk	6% to 9%	4% to 4.2%	5.5% to 5.8%
+
+![image](https://github.com/yogeshcodeshare/MilkPro-Data-Pipeline-Project/assets/112055681/701ba99f-6827-4af4-9379-c63a53693bb3)
 
 •	Location-based Data Segregation: The project analyzes milk data based on geographical locations to identify any regional variations in milk properties. This allows for the comparison of milk properties between different locations to understand the impact of location on milk quality. E.g  Koyana Sahakari Dudh Utpadak Prakriya Sangh Ltd., Karad have procurement area in karad (Karad and Navarasta Area) and patan cities (Patan , koyana).
+
 •	Error Handling: An error handling mechanism is implemented to identify and redirect bad data to a separate dataframe for further analysis and data quality control. This ensures that any anomalies or inaccuracies in the data are isolated for inspection and corrective action.
+
 •	Data Storage in HDFS and Hive Analysis: The processed data, categorized milk information, and location-based data are stored in Hadoop Distributed File System (HDFS). This enables seamless integration with Apache Hive, allowing for extensive analysis and querying using Hive's SQL-like interface. The stored data can be used to generate valuable insights and support business decisions.
+
 •	Alert Email Generation: In case of the detection of bad data, an automated email alert is triggered to notify the manager. The email contains essential information about the detected bad data, enabling prompt action and ensuring data quality and integrity.
 
-Methodology:
+# Methodology:
 •	The project leverages PySpark, a distributed data processing framework, to handle real-time data streaming, processing, and analysis.
-•	Kafka, a distributed streaming platform, is used as the message broker for data ingestion and transmission.
+
+•	Kafka, a distributed streaming platform, is used as the message broker for data ingestion and transmission. 
+
 •	The data pipeline involves data streaming, transformation, filtering, and segregation using PySpark's DataFrame API.
+
 •	Statistical analysis, classification techniques, and error handling mechanisms are applied to the milk properties data.
 
-Potential Technology:
+#Potential Technology:
 The "MilkPro Data Pipeline" utilizes the following technologies and methodologies:
 1)	PySpark: A distributed data processing framework that handles real-time data streaming, processing, and analysis efficiently.
 2)	Kafka: A distributed streaming platform used as the message broker for data ingestion and transmission, ensuring smooth and reliable data flow.
@@ -51,19 +54,25 @@ The "MilkPro Data Pipeline" utilizes the following technologies and methodologie
 4)	Data Streaming: Techniques for processing and analyzing data streams in real-time, enabling the pipeline to handle large volumes of milk properties data seamlessly.
 5)	Data Analysis: Statistical analysis and classification techniques are applied to the milk properties data to derive valuable insights and patterns.
 6)	Error Handling: Mechanisms are in place to identify and handle bad data, ensuring data quality and accuracy in downstream analysis.
-Deliverables:
+7)	
+# Deliverables:
 •	Implementation of a PySpark and Kafka data pipeline for processing milk properties data.
+
 •	Analysis of the relationships between milk properties, including id, fat_percentage, protein_percentage, lactose_percentage, and temperature.
+
 •	Insights and visualizations on quality control measures, enzymatic activity, and process optimization based on the analysis results.
 
-Potential Challenges:
+# Potential Challenges:
 The project may encounter the following challenges:
 •	Handling Real-time Data Streaming: Ensuring that the data pipeline efficiently processes and analyzes real-time data streams without delays or bottlenecks.
+
 •	Efficient Classification Techniques: Implementing efficient classification techniques for accurately categorizing milk based on fat percentage and other properties.
+
 •	Data Quality Issues: Addressing data quality issues and handling outliers or inaccuracies in the milk properties dataset to ensure the reliability of the analysis.
+
 •	Performance Optimization: Optimizing the pipeline's performance to handle varying environmental conditions and scale as the data volume grows.
 
-Business Question 
+# Business Question 
 1.	Is there a correlation between fat percentage and protein percentage in milk, and how does it impact milk quality?
 2.	How do milk properties, such as fat percentage and lactose percentage, vary across different geographical locations, and are there any regional variations in milk quality?
 3.	Does the pH level of milk have an impact on its fat percentage and protein percentage, and how can we optimize pH levels for better milk quality?
@@ -75,7 +84,7 @@ Business Question
 9.	How does the temperature at which milk is produced impact its fat percentage and protein percentage, and how can we optimize milk production temperature for desired properties?
 10.	Are there any significant differences in milk properties between different farms or suppliers, and how can we identify and address variations in milk quality from different sources?
 
-Steps to Complete the Project:
+# Steps to Complete the Project:
 1.	Set up the PySpark and Kafka environment to handle data streaming and processing efficiently.
 2.	Define the data schema and configure the data pipeline to ingest milk properties data from various sources, either through the faker library or real-world data feeds.
 3.	Implement data transformations, filtering, and segregation based on milk categorization and location to create separate dataframes for different types of milk and geographical regions.
