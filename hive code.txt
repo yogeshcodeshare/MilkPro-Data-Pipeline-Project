@@ -1,0 +1,60 @@
+1) check the files are present in the HDFS or Not
+
+hdfs dfs -ls /user/itv007039/warehouse/ybm_test_db.db
+
+2) if the parquet files are present then remove the files.
+
+hdfs dfs -rm -r /user/itv007039/warehouse/ybm_test_db.db/Karad_data.parquet
+hdfs dfs -rm -r /user/itv007039/warehouse/ybm_test_db.db/Koyana_data.parquet
+hdfs dfs -rm -r /user/itv007039/warehouse/ybm_test_db.db/Navarasta_data.parquet
+hdfs dfs -rm -r /user/itv007039/warehouse/ybm_test_db.db/Patan_data.parquet
+hdfs dfs -rm -r /user/itv007039/warehouse/ybm_test_db.db/bad_data.parquet
+
+3) GO to Hive Shell
+
+hive
+
+4) Verify the table is present in the database 
+
+use ybm_test_db;
+show tables;
+
+5) To drop the existing table, 
+
+DROP TABLE IF EXISTS karad_data;
+
+6) Create a external table in the hive using parquet file
+
+CREATE EXTERNAL TABLE ybm_test_db.karad_data (
+    milk_id INT,
+    batch_id STRING,
+    farm_id STRING,
+    area STRING,
+    milk_timestamp STRING,
+    fat_percentage FLOAT,
+    protein_percentage FLOAT,
+    lactose_percentage FLOAT,
+    temperature INT
+)
+STORED AS PARQUET
+LOCATION '/user/itv007039/warehouse/ybm_test_db.db/Karad_data.parquet';
+
+
+7) milk Categorization usinf the Fat percentage.
+SELECT
+    milk_id,
+    batch_id,
+    farm_id,
+    area,
+    fat_percentage,
+    protein_percentage,
+    lactose_percentage,
+    temperature,
+    CASE
+        WHEN fat_percentage >= 0.1 AND fat_percentage <= 0.5 THEN 'Skimmed Milk'
+        WHEN fat_percentage >= 0.6 AND fat_percentage <= 2.9 THEN 'Double Toned Milk'
+        WHEN fat_percentage >= 3 AND fat_percentage <= 5.9 THEN 'Standardized Milk'
+        WHEN fat_percentage >= 6 AND fat_percentage <= 9 THEN 'Full Cream Milk'
+        ELSE 'Other'
+    END AS milk_category
+FROM karad_data;
